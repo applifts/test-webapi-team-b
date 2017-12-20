@@ -1,0 +1,5 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/TestWebApi/obj/Debug/netcoreapp2.0/TestWebApi.AssemblyInfo.cs

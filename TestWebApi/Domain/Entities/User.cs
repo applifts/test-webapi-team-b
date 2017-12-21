@@ -1,4 +1,4 @@
-namespace WebApi.Entities
+namespace TestWebApi.Domain.Entities
 {
     public class User
     {

@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
-using WebApi.Services;
-using WebApi.Dtos;
-using AutoMapper;
 using System.IdentityModel.Tokens.Jwt;
-using WebApi.Helpers;
-using Microsoft.Extensions.Options;
-using System.Text;
-using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
-using WebApi.Entities;
+using System.Text;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using TestWebApi.Domain.Entities;
+using TestWebApi.Helpers;
+using TestWebApi.Services;
+using TestWebApi.Services.Dtos;
 
-namespace WebApi.Controllers
+namespace TestWebApi.Controllers
 {
     [Authorize]
     [Route("[controller]")]

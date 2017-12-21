@@ -1,8 +1,8 @@
 using AutoMapper;
-using WebApi.Dtos;
-using WebApi.Entities;
+using TestWebApi.Domain.Entities;
+using TestWebApi.Services.Dtos;
 
-namespace WebApi.Helpers
+namespace TestWebApi.Helpers
 {
     public class AutoMapperProfile : Profile
     {

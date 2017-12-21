@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using WebApi.Entities;
+using TestWebApi.Domain.Entities;
 
-namespace WebApi.Helpers
+namespace TestWebApi.Helpers
 {
     public class DataContext : DbContext
     {

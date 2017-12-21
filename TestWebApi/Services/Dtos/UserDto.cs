@@ -1,4 +1,4 @@
-namespace WebApi.Dtos
+namespace TestWebApi.Services.Dtos
 {
     public class UserDto
     {

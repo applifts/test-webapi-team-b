@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using WebApi.Entities;
-using WebApi.Helpers;
+using TestWebApi.Domain.Entities;
+using TestWebApi.Helpers;
 
-namespace WebApi.Services
+namespace TestWebApi.Services
 {
     public interface IUserService
     {

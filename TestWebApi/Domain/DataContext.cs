@@ -1,11 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using TestWebApi.Domain.Entities;
 
-namespace TestWebApi.Helpers
+namespace TestWebApi.Domain
 {
     public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
+        public DataContext(DbContextOptions<DataContext> options) 
+            : base((DbContextOptions) options) { }
 
         public DbSet<User> Users { get; set; }
     }

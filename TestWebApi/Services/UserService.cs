@@ -1,24 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TestWebApi.Domain;
 using TestWebApi.Domain.Entities;
 using TestWebApi.Helpers;
 
 namespace TestWebApi.Services
 {
-    public interface IUserService
-    {
-        User Authenticate(string username, string password);
-        IEnumerable<User> GetAll();
-        User GetById(int id);
-        User Create(User user, string password);
-        void Update(User user, string password = null);
-        void Delete(int id);
-    }
-
     public class UserService : IUserService
     {
-        private DataContext _context;
+        private readonly DataContext _context;
 
         public UserService(DataContext context)
         {

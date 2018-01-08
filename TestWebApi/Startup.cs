@@ -8,6 +8,7 @@ using AutoMapper;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using TestWebApi.Domain;
 using TestWebApi.Helpers;
 using TestWebApi.Services;
 
@@ -65,7 +66,7 @@ namespace TestWebApi
             });
 
             // configure DI for application services
-            services.AddScoped<IUserService, UserService>();
+            services.AddTransient<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

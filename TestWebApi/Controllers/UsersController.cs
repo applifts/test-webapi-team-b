@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Text;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -15,6 +16,7 @@ using TestWebApi.Services.Dtos;
 
 namespace TestWebApi.Controllers
 {
+    [EnableCors("AllowAllHeaders")]
     [Authorize]
     [Route("[controller]")]
     public class UsersController : Controller

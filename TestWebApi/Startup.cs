@@ -36,7 +36,7 @@ namespace TestWebApi
                 options.AddPolicy("AllowAllHeaders",
                     builder =>
                     {
-                        builder.AllowAnyOrigin()
+                        builder.WithOrigins("https://testangularwebui.azurewebsites.net")
                             .AllowAnyHeader()
                             .AllowAnyMethod()
                             .AllowCredentials();

@@ -8,6 +8,7 @@ using AutoMapper;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using TestWebApi.Domain;
 using TestWebApi.Helpers;
 using TestWebApi.Services;
 

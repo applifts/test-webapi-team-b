@@ -31,7 +31,18 @@ namespace TestWebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            //services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllHeaders",
+                    builder =>
+                    {
+                        builder.WithOrigins("https://testangularwebui.azurewebsites.net")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .AllowCredentials();
+                    });
+            });
 
             //services.AddDbContext<DataContext>(x => x.UseInMemoryDatabase("TestDb"));
             services.AddDbContext<DataContext>(options =>

@@ -16,7 +16,6 @@ using TestWebApi.Services.Dtos;
 
 namespace TestWebApi.Controllers
 {
-    [EnableCors("AllowAllHeaders")]
     [Authorize]
     [Route("[controller]")]
     public class UsersController : Controller

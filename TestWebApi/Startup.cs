@@ -37,10 +37,10 @@ namespace TestWebApi
                 options.AddPolicy("AllowAllHeaders",
                     builder =>
                     {
-                        builder.WithOrigins("https://testangularwebui.azurewebsites.net")
-                            .AllowAnyHeader()
+                        builder.AllowAnyHeader()
                             .AllowAnyMethod()
-                            .AllowCredentials();
+                            .AllowCredentials()
+                            .WithOrigins("https://testangularwebui.azurewebsites.net");
                     });
             });
 

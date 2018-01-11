@@ -32,19 +32,11 @@ namespace TestWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy("AllowAllHeaders",
-            //        builder =>
-            //        {
-            //            builder.WithOrigins("https://testangularwebui.azurewebsites.net")
-            //                .AllowAnyHeader()
-            //                .AllowAnyMethod()
-            //                .AllowCredentials();
-            //        });
-            //});
 
+            //db connection for a local db, not on sql server
             //services.AddDbContext<DataContext>(x => x.UseInMemoryDatabase("TestDb"));
+
+            //db connection for an actual database
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -92,11 +84,10 @@ namespace TestWebApi
 
             // global cors policy
             app.UseCors(x => x
-                .WithOrigins("https://testangularwebui.azurewebsites.net")
+                .WithOrigins("http://localhost:3000")
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials());
-            //app.UseCors("AllowAllHeaders");
 
             app.UseAuthentication();
 

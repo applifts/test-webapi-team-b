@@ -31,12 +31,22 @@ namespace TestWebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder =>
+                    {
+                        builder.WithOrigins(Configuration.GetValue<string>("ClientUrl"))
+                            .AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .AllowCredentials();
+                    });
+            });
 
-            //db connection for a local db, not on sql server
+            //for local testing without connecting to an actual database
             //services.AddDbContext<DataContext>(x => x.UseInMemoryDatabase("TestDb"));
 
-            //db connection for an actual database
+            //for local or live website that does connect to an actual database
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -83,11 +93,7 @@ namespace TestWebApi
             loggerFactory.AddDebug();
 
             // global cors policy
-            app.UseCors(x => x
-                .WithOrigins("http://localhost:3000")
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .AllowCredentials());
+            app.UseCors("CorsPolicy");
 
             app.UseAuthentication();
 

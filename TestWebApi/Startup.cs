@@ -31,18 +31,18 @@ namespace TestWebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddCors();
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAllHeaders",
-                    builder =>
-                    {
-                        builder.WithOrigins("https://testangularwebui.azurewebsites.net")
-                            .AllowAnyHeader()
-                            .AllowAnyMethod()
-                            .AllowCredentials();
-                    });
-            });
+            services.AddCors();
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("AllowAllHeaders",
+            //        builder =>
+            //        {
+            //            builder.WithOrigins("https://testangularwebui.azurewebsites.net")
+            //                .AllowAnyHeader()
+            //                .AllowAnyMethod()
+            //                .AllowCredentials();
+            //        });
+            //});
 
             //services.AddDbContext<DataContext>(x => x.UseInMemoryDatabase("TestDb"));
             services.AddDbContext<DataContext>(options =>
@@ -83,19 +83,20 @@ namespace TestWebApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseDeveloperExceptionPage();
-            app.UseStatusCodePages();
+            //if your web api is throwing an error, the error page will come back in the response so you can figure out what's going on!
+            //app.UseDeveloperExceptionPage();
+            //app.UseStatusCodePages();
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
             // global cors policy
-            //app.UseCors(x => x
-            //    .AllowAnyOrigin()
-            //    .AllowAnyMethod()
-            //    .AllowAnyHeader()
-            //    .AllowCredentials());
-            app.UseCors("AllowAllHeaders");
+            app.UseCors(x => x
+                .WithOrigins("https://testangularwebui.azurewebsites.net")
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
+            //app.UseCors("AllowAllHeaders");
 
             app.UseAuthentication();
 

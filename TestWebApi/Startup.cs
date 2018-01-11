@@ -8,8 +8,6 @@ using AutoMapper;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using TestWebApi.Domain;
 using TestWebApi.Helpers;
 using TestWebApi.Services;
@@ -34,32 +32,21 @@ namespace TestWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddCors();
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy("AllowAllHeaders",
-            //        builder =>
-            //        {
-            //            builder.AllowAnyHeader()
-            //                .AllowAnyMethod()
-            //                .AllowCredentials()
-            //                .WithOrigins("https://testangularwebui.azurewebsites.net");
-            //        });
-            //});
-            services.AddCors(options => {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder.WithOrigins("https://testangularwebui.azurewebsites.net")
-                        .AllowAnyMethod()
-                        .AllowAnyHeader()
-                        .AllowCredentials().Build());
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllHeaders",
+                    builder =>
+                    {
+                        builder.WithOrigins("https://testangularwebui.azurewebsites.net")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .AllowCredentials();
+                    });
             });
+
             //services.AddDbContext<DataContext>(x => x.UseInMemoryDatabase("TestDb"));
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.Configure<MvcOptions>(options =>
-            {
-                options.Filters.Add(new CorsAuthorizationFilterFactory("CorsPolicy"));
-            });
 
             services.AddMvc();
             services.AddAutoMapper();
@@ -105,7 +92,7 @@ namespace TestWebApi
             //    .AllowAnyMethod()
             //    .AllowAnyHeader()
             //    .AllowCredentials());
-            app.UseCors("CorsPolicy");
+            app.UseCors("AllowAllHeaders");
 
             app.UseAuthentication();
 

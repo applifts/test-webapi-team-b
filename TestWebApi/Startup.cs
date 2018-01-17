@@ -39,7 +39,8 @@ namespace TestWebApi
                         builder.WithOrigins(Configuration.GetValue<string>("ClientUrl"))
                             .AllowAnyHeader()
                             .AllowAnyMethod()
-                            .AllowCredentials();
+                            .AllowCredentials()
+                            .AllowAnyOrigin();
                     });
             });
 

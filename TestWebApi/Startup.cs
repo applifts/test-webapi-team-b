@@ -44,11 +44,11 @@ namespace TestWebApi
             });
 
             //for local testing without connecting to an actual database
-            //services.AddDbContext<DataContext>(x => x.UseInMemoryDatabase("TestDb"));
+            services.AddDbContext<DataContext>(x => x.UseInMemoryDatabase("TestDb"));
 
             //for local or live website that does connect to an actual database
-            services.AddDbContext<DataContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<DataContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc();
             services.AddAutoMapper();

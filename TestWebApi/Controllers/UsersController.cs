@@ -76,7 +76,7 @@ namespace TestWebApi.Controllers
 
             try 
             {
-                // save 
+                // save - this is where a user is created
                 _userService.Create(user, userDto.Password);
                 return Ok();
             } 

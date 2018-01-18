@@ -50,7 +50,10 @@ namespace TestWebApi.Services
             // validation
             if (string.IsNullOrWhiteSpace(password))
                 throw new AppException("Password is required");
-
+            if (string.IsNullOrWhiteSpace(user.Email))
+                throw new AppException("Email is required");
+            if (string.IsNullOrWhiteSpace(user.PhoneNumber))
+                throw new AppException("Phone Number is required");
             if (_context.Users.Any(x => x.Username == user.Username))
                 throw new AppException("Username " + user.Username + " is already taken");
 

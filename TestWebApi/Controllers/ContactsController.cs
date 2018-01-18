@@ -35,7 +35,7 @@ namespace TestWebApi.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("/contacts")]
+        [HttpPost("/contacts/{contacts}")]
         public IActionResult Register([FromBody]ContactDto contactDto)
         {
             // map dto to entity

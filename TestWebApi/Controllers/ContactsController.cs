@@ -35,7 +35,7 @@ namespace TestWebApi.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost]
+        [HttpPost("/contacts")]
         public IActionResult Register([FromBody]ContactDto contactDto)
         {
             // map dto to entity
@@ -54,7 +54,7 @@ namespace TestWebApi.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("/contacts")]
         public IActionResult GetAll()
         {
             var contacts = _contactService.GetAll();
@@ -62,7 +62,7 @@ namespace TestWebApi.Controllers
             return Ok(contactDtos);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("/contacts/{id}")]
         public IActionResult GetById(int id)
         {
             var contact = _contactService.GetById(id);
@@ -70,7 +70,7 @@ namespace TestWebApi.Controllers
             return Ok(contactDto);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("/contacts/{id}")]
         public IActionResult Delete(int id)
         {
             _contactService.Delete(id);

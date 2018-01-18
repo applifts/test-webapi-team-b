@@ -9,5 +9,6 @@ namespace TestWebApi.Domain
             : base((DbContextOptions) options) { }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
     }
 }

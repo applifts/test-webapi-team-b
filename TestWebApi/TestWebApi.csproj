@@ -9,6 +9,7 @@
     <Content Remove="wwwroot\**" />
     <EmbeddedResource Remove="wwwroot\**" />
     <None Remove="wwwroot\**" />
+    <Compile Remove="Services\Dtos\IContactService.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -10,6 +10,8 @@ namespace TestWebApi.Helpers
         {
             CreateMap<User, UserDto>();
             CreateMap<UserDto, User>();
+            CreateMap<Contact, ContactDto>();
+            CreateMap<ContactDto, Contact>();
         }
     }
 }

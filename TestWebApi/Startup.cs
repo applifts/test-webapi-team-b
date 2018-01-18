@@ -80,6 +80,7 @@ namespace TestWebApi
 
             // configure DI for application services
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IContactService, ContactService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
